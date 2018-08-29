@@ -1,20 +1,16 @@
-#ifndef POLYDATA_H
-#define POLYDATA_H
+#ifndef POLYGON_H
+#define POLYGON_H
 
 #include <iostream>
 #include <string>
 #include <vector>
-#include "point.h"
-
-using namespace std;
 
 class Polygon{
-private:
-    vector<Point*> point;
 public:
-    Polygon(const char *arc);
-    void print();
-    void saveToFile(const char* arc);
+    int three,p1,p2,p3;
+    Polygon(int p1, int p2, int p3);
+    Polygon(const char* str);
+    void print_polygon();
 };
 
-#endif /*POLYDATA_H*/
+#endif /*POLYGON_H*/

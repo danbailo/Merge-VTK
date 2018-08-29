@@ -5,15 +5,12 @@
 #include <string>
 #include <vector>
 
-/** Declaração da classe Point, onde esta
-  * contém os elementos x, y e z referentes ao espaço tridimensional;
-  */
 class Point{
 public:
     double x,y,z;
     Point(double x, double y, double z);
     Point(const char* str);
-    void print();
+    void print_point();
 };
 
 #endif /*POINTS_H*/

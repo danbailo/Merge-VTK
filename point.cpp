@@ -15,6 +15,6 @@ Point::Point(const char* str){
     if(res!=3) throw "menos de 3 pontos numa linha";
 }
 
-void Point::print(){
+void Point::print_point(){
     printf("%lf %lf %lf\n",x,y,z);
 }

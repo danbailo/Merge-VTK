@@ -12,6 +12,7 @@
  */
 
 #include <iostream>
+#include "polydata.h"
 #include "polygon.h"
 #include "point.h"
 
@@ -19,10 +20,10 @@ using namespace std;
 
 int main(int argc, char const *argv[]){
     
-    Polygon P("points_sphere.txt");
+    Polydata P("points_sphere.txt");
 
-    P.print();
+    P.print_point();
 
-    P.saveToFile("pontos.vtk");
+    // P.saveToFile("pontos.vtk");
     return 0;
 }

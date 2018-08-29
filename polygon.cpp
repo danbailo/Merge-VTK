@@ -1,56 +1,21 @@
 #include <iostream>
-#include <vector>
-#include <string.h>
 #include <stdio.h>
 #include "polygon.h"
-#include "point.h"
 
 using namespace std;
 
-void Polygon::saveToFile(const char *arc){
-    FILE *f = fopen(arc,"w");
-    double n_pontos = point.size();
-    int i;
-    char c, letra = '\n';
+// Polygon::Polygon(int three, int p1, int p2, int p3){
+//     this->three = three;
+//     this->p1 = p1;
+//     this->p2 = p2;
+//     this->p3 = p3;
+// }
 
-    fprintf(f,"# vtk DataFile Version 2.0\n");
-    fprintf(f,"Piramide example\n");
-    fprintf(f,"ASCII\n");
-    fprintf(f,"DATASET POLYDATA\n");
-    fprintf(f,"POINTS %lu float\n",point.size());
-    fprintf(f,"POLYGONS %.lf %.lf\n",(n_pontos-2), ((n_pontos-2)*3+(n_pontos-2)));
-    
-    fclose(f);
+Polygon::Polygon(const char* str){
+    int res=sscanf(str,"%d %d %d %d",&three,&p1,&p2,&p3);
+    if(res!=4) throw "menos de 4 pontos numa linha";
 }
 
-void Polygon::print(){
-    for(Point* p:point){ //for each
-        p->print();
-    }
-}
-
-Polygon::Polygon(const char *arc){
-    FILE *f = fopen(arc,"r");
-    
-    if(!f){
-        printf("nao abri o arquivo");
-        return;
-    }
-    char buff[256];
-    int i=1;
-
-    //para cada linha do arquivo até o final
-    while((fgets(buff,256,f))){
-        if(strlen(buff)==255){
-            printf("Error, the line of a file can not exceed 256 characters\n");
-            return;
-        }
-        try{
-            point.push_back(new Point(buff));
-        }catch(const char* err){
-            printf("erro na linha %i: %s\n",i,err);
-        }
-        i++;
-    }
-    fclose(f);
+void Polygon::print_polygon(){
+    printf("%d %d %d %d\n",three,p1,p2,p3);
 }
