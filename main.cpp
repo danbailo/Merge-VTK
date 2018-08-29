@@ -19,11 +19,10 @@ using namespace std;
 
 int main(int argc, char const *argv[]){
     
-    Polygon P("pontos.txt");
+    Polygon P("points_sphere.txt");
 
     P.print();
 
     P.saveToFile("pontos.vtk");
-    
     return 0;
 }

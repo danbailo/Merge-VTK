@@ -10,7 +10,7 @@ using namespace std;
 
 class Polygon{
 private:
-    vector<Point*> points;
+    vector<Point*> point;
 public:
     Polygon(const char *arc);
     void print();

@@ -9,7 +9,7 @@ using namespace std;
 
 void Polygon::saveToFile(const char *arc){
     FILE *f = fopen(arc,"w");
-    double n_pontos = points.size();
+    double n_pontos = point.size();
     int i;
     char c, letra = '\n';
 
@@ -17,22 +17,22 @@ void Polygon::saveToFile(const char *arc){
     fprintf(f,"Piramide example\n");
     fprintf(f,"ASCII\n");
     fprintf(f,"DATASET POLYDATA\n");
-    fprintf(f,"POINTS %lu float\n",points.size());
+    fprintf(f,"POINTS %lu float\n",point.size());
     fprintf(f,"POLYGONS %.lf %.lf\n",(n_pontos-2), ((n_pontos-2)*3+(n_pontos-2)));
     
     fclose(f);
 }
 
 void Polygon::print(){
-    for(Point* p:points){ //for each
+    for(Point* p:point){ //for each
         p->print();
     }
 }
 
 Polygon::Polygon(const char *arc){
-    FILE *arq = fopen(arc,"r");
+    FILE *f = fopen(arc,"r");
     
-    if(!arq){
+    if(!f){
         printf("nao abri o arquivo");
         return;
     }
@@ -40,17 +40,17 @@ Polygon::Polygon(const char *arc){
     int i=1;
 
     //para cada linha do arquivo até o final
-    while((fgets(buff,256,arq))){
+    while((fgets(buff,256,f))){
         if(strlen(buff)==255){
             printf("Error, the line of a file can not exceed 256 characters\n");
             return;
         }
         try{
-            points.push_back(new Point(buff));
+            point.push_back(new Point(buff));
         }catch(const char* err){
             printf("erro na linha %i: %s\n",i,err);
         }
         i++;
     }
-    fclose(arq);
+    fclose(f);
 }
