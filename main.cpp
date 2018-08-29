@@ -20,9 +20,19 @@ using namespace std;
 
 int main(int argc, char const *argv[]){
     
-    Polydata P("points_sphere.txt");
+    Polydata P;
 
+    cout << "Points" << endl;
+
+    P.polydata_point("points_sphere.txt");
     P.print_point();
+
+    cout << endl;
+
+    cout << "Polygons" << endl;
+
+    P.polydata_polygon("polygons_sphere.txt");
+    P.print_polygon();
 
     // P.saveToFile("pontos.vtk");
     return 0;

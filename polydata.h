@@ -14,7 +14,8 @@ private:
     vector<Point*> point;
     vector<Polygon*> polygon;
 public:
-    Polydata(const char *arc);
+    void polydata_point(const char *arc);
+    void polydata_polygon(const char *arc);
     void print_polygon();
     void print_point();
     void saveToFile(const char* arc);

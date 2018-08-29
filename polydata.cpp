@@ -36,7 +36,7 @@ void Polydata::print_polygon(){
     }
 }
 
-Polydata::Polydata(const char *arc){
+void Polydata::polydata_point(const char *arc){
     FILE *arq = fopen(arc,"r");
     
     if(!arq){
@@ -54,6 +54,32 @@ Polydata::Polydata(const char *arc){
         }
         try{
             point.push_back(new Point(buff));
+        }catch(const char* err){
+            printf("erro na linha %i: %s\n",i,err);
+        }
+        i++;
+    }
+    fclose(arq);
+}
+
+void Polydata::polydata_polygon(const char *arc){
+    FILE *arq = fopen(arc,"r");
+    
+    if(!arq){
+        printf("nao abri o arquivo");
+        return;
+    }
+    char buff[256];
+    int i=1;
+
+    //para cada linha do arquivo até o final
+    while((fgets(buff,256,arq))){
+        if(strlen(buff)==255){
+            printf("Error, the line of a file can not exceed 256 characters\n");
+            return;
+        }
+        try{
+            polygon.push_back(new Polygon(buff));
         }catch(const char* err){
             printf("erro na linha %i: %s\n",i,err);
         }
