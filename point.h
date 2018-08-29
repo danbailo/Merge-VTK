@@ -1,11 +1,19 @@
-#ifndef POINT_H
-#define POINT_H
+#ifndef POINTS_H
+#define POINTS_H
 
+#include <iostream>
+#include <string>
+#include <vector>
+
+/** Declaração da classe Point, onde esta
+  * contém os elementos x, y e z referentes ao espaço tridimensional;
+  */
 class Point{
-private:
-
 public:
     double x,y,z;
+    Point(double x, double y, double z);
+    Point(const char* str);
+    void print();
 };
 
-#endif /*POINT_H*/
+#endif /*POINTS_H*/
