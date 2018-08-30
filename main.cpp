@@ -33,7 +33,8 @@ int main(int argc, char const *argv[]){
 
     P.polydata_polygon("polygons_sphere.txt");
     P.print_polygon();
+    // printf("%i\n",P.size());
 
-    // P.saveToFile("pontos.vtk");
+    P.saveToFile("esfera_final.vtk");
     return 0;
 }

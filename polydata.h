@@ -18,6 +18,7 @@ public:
     void polydata_polygon(const char *arc);
     void print_polygon();
     void print_point();
+    int size();
     void saveToFile(const char* arc);
 };
 
